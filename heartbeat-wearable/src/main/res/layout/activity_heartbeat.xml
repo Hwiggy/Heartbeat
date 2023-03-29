@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".Heartbeat"
         tools:deviceIds="wear"
-        android:padding="@dimen/box_inset_layout_padding">
+        android:padding="@dimen/box_inset_layout_padding" tools:visibility="invisible" android:visibility="invisible">
 
     <FrameLayout
             android:layout_width="match_parent"
@@ -19,7 +19,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_world"/>
+                android:text="@string/hello_world" tools:visibility="visible"/>
 
     </FrameLayout>
 </androidx.wear.widget.BoxInsetLayout>
