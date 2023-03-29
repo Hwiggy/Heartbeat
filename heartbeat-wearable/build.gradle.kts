@@ -36,6 +36,8 @@ dependencies {
     implementation("androidx.percentlayout:percentlayout:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.3.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("androidx.wear:wear:1.2.0")
+    implementation("androidx.health:health-services-client:1.0.0-beta02")
+
+    implementation(project(":heartbeat-common"))
 }
