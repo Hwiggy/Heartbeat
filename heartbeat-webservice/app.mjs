@@ -11,6 +11,7 @@ import Strategy from 'passport-discord';
 passport.use("discord", new Strategy(config.authentication.discord,
     (acc, ref, prof, cb) => {
         console.log(prof)
+        return cb(profile)
     }
 ))
 
