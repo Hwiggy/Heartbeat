@@ -18,7 +18,11 @@ app.get('/auth', passport.authenticate("discord"))
 app.get('/auth/callback', passport.authenticate("discord", {
     failureRedirect: "/"
 }), (req, res) => {
+    res.redirect("/auth/success")
+})
 
+app.get('/auth/success', (req, res) => {
+    res.send(200)
 })
 
 const server = app.listen(config.port, config.host, () => {
