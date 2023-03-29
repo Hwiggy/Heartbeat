@@ -1,7 +1,7 @@
 import express from 'express';
 import * as WebSocket from 'ws'
 
-const config = require('config.json')
+import config from 'config.json';
 const app = express()
 const server = app.listen(config.port, config.host, () => {
     console.log("Heartbeat webservice is now online")
