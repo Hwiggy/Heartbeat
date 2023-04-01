@@ -9,7 +9,7 @@ html
     body
         #chart
         script.
-            let datai = '!{data}'
+            let datai = !{data}
             new Chart(document.getElementById("chart"), {
                 type: 'scatter',
                 data: {
