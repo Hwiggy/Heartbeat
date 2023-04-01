@@ -11,5 +11,8 @@
     "pug": "^3.0.2",
     "unix-timestamp": "^1.0.3",
     "ws": "^8.13.0"
+  },
+  "scripts": {
+    "start": "node app.mjs"
   }
 }
