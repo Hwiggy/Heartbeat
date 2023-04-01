@@ -18,7 +18,7 @@ const graph = new Map()
 app.get('/', (req, res) => {
     let data = Array.from(graph).map(elem => {
         let date = timestamp.toDate(Number(elem[0]) / 1000)
-        let dateStr = moment(date).format("MM-dd-yyyy hh:mm:ss")
+        let dateStr = moment(date).format("MM-DD-yyyy hh:mm:ss")
         return {
             "x": dateStr,
             "y": elem[1]
