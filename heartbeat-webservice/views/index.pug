@@ -4,6 +4,20 @@ html
         meta(charset='UTF-8')
         meta(name='viewport' content='width=device-width, initial-scale=1.0')
         meta(http-equiv='X-UA-Compatible' content='ie-edge')
+        script(type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js")
         title= "Heartbeat"
     body
-        block= graph
+        #chart
+        script.
+            new Chart(document.getElementById("chart"), {
+                type: 'scatter',
+                data: {
+                    label: data.map(it => it.key),
+                    datasets: [
+                        {
+                            label: "Heart-rate (BPM) over Time",
+                            data: data.map(it => it.value)
+                        }
+                    ]
+                }
+            })

@@ -62,7 +62,7 @@ class Heartbeat : ComponentActivity() {
 
     val sensorListener = object : SensorEventListener {
         override fun onSensorChanged(p0: SensorEvent) {
-            publishMetric(p0.values[0])
+            publishMetric(p0.values[0].toInt())
         }
 
         override fun onAccuracyChanged(p0: Sensor, p1: Int) {
