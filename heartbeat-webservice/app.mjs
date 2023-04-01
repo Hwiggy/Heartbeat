@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 wss.on('connection', ws => {
     ws.on('error', console.error)
     ws.on('message', data => {
-        graph.set(`${timestamp.now()}`, data)
+        graph.set(`${timestamp.now()}`, `${data}`)
         console.log(`received: ${data}`)
         ws.send(`replying for ${data}`)
     })
