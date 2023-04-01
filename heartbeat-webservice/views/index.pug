@@ -13,14 +13,6 @@ html
             new Chart(document.getElementById("chart"),
                 {
                     type: 'line',
-                    options: {
-                        scales: {
-                            x: {
-                                type: 'linear',
-                                position: 'bottom'
-                            }
-                        }
-                    },
                     data: {
                         labels: datai.flatMap(it => it.x),
                         datasets: [
