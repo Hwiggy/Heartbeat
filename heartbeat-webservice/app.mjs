@@ -17,7 +17,7 @@ const wss = new WebSocket.WebSocketServer({ server })
 const graph = new Map()
 app.get('/', (req, res) => {
     let data = Array.from(graph).map(elem => ({
-        "x": timestamp.toDate(elem[0]).toDateString(),
+        "x": timestamp.toDate(Number(elem[0])).toDateString(),
         "y": elem[1]
     }))
     res.render('index', {data: JSON.stringify(data)})
