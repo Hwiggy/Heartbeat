@@ -22,10 +22,11 @@ html
                         }
                     },
                     data: {
+                        labels: datai.map(it => it.x),
                         datasets: [
                             {
                                 label: "Heart-rate (BPM) over Time",
-                                data: datai
+                                data: datai.map(it => it.y)
                             }
                         ]
                     }
