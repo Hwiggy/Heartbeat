@@ -2,7 +2,7 @@ import express from 'express';
 import timestamp from 'unix-timestamp';
 import * as WebSocket from 'ws'
 import 'map.stringify';
-
+import moment from 'moment';
 import config from './config.json' assert { type: "json" }
 const app = express()
 
@@ -16,10 +16,14 @@ const wss = new WebSocket.WebSocketServer({ server })
 
 const graph = new Map()
 app.get('/', (req, res) => {
-    let data = Array.from(graph).map(elem => ({
-        "x": timestamp.toDate(Number(elem[0])).toDateString(),
-        "y": elem[1]
-    }))
+    let data = Array.from(graph).map(elem => {
+        let date = timestamp.toDate(Number(elem[0]))
+        let dateStr = moment(date).format("MM-dd-yyyy hh:mm:ss")
+        return {
+            "x": dateStr,
+            "y": elem[1]
+        }
+    })
     res.render('index', {data: JSON.stringify(data)})
 })
 wss.on('connection', ws => {
