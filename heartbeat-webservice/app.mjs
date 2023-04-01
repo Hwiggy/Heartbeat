@@ -1,7 +1,7 @@
 import express from 'express';
 import timestamp from 'unix-timestamp';
 import * as WebSocket from 'ws'
-require('map.stringify')
+import 'map.stringify';
 
 import config from './config.json' assert { type: "json" }
 const app = express()
