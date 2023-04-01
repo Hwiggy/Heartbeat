@@ -6,6 +6,8 @@
     "passport": "^0.6.0",
     "passport-discord": "^0.1.4",
     "passport-oauth2-refresh": "^2.1.0",
+    "pug": "^3.0.2",
+    "unix-timestamp": "^1.0.3",
     "ws": "^8.13.0"
   }
 }

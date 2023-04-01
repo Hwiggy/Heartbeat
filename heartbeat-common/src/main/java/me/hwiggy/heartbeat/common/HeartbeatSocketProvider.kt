@@ -5,14 +5,17 @@ import okhttp3.*
 import okio.ByteString
 import java.io.Closeable
 import java.util.concurrent.TimeUnit
+import java.util.function.Supplier
 
 private const val TAG = "Heartbeat Socket Provider"
-class HeartbeatSocketProvider : WebSocketListener(), Closeable {
+class HeartbeatSocketProvider : WebSocketListener(), Closeable, Supplier<WebSocket> {
     private val http = OkHttpClient.Builder()
         .pingInterval(30, TimeUnit.SECONDS)
         .build()
     private val req = Request.Builder().url("wss://heartbeat.hwiggy.me/socket").build()
+
     private lateinit var wsc: WebSocket
+
     override fun onOpen(webSocket: WebSocket, response: Response) {
         Log.i(TAG, "Socket connected!")
     }
@@ -35,11 +38,15 @@ class HeartbeatSocketProvider : WebSocketListener(), Closeable {
 
     override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
         Log.e(TAG, "Socket Failure!", t)
+        wsc = openSocket()
     }
 
-    fun open(): WebSocket {
-        wsc = http.newWebSocket(req, this)
+    private fun openSocket(): WebSocket = http.newWebSocket(req, this)
+    override fun close() { wsc.close(1000, "Graceful Exit") }
+    override fun get(): WebSocket {
+        if (!this::wsc.isInitialized) {
+            wsc = openSocket()
+        }
         return wsc
     }
-    override fun close() { wsc.close(1000, "Graceful Exit") }
 }
