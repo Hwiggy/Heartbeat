@@ -24,7 +24,9 @@ app.get('/', (req, res) => {
             "y": elem[1]
         }
     })
-    res.render('index', {data: JSON.stringify(data)})
+    res.render('index', {data: JSON.stringify(data)}, () => {
+        setInterval(res.refresh(), 1000)
+    })
 })
 wss.on('connection', ws => {
     ws.on('error', console.error)
