@@ -9,15 +9,15 @@ html
     body
         #chart
         script.
-            let data = '!{data}'
+            let datai = '!{data}'
             new Chart(document.getElementById("chart"), {
                 type: 'scatter',
                 data: {
-                    label: data.map(it => it.key),
+                    label: datai.map(it => it.key),
                     datasets: [
                         {
                             label: "Heart-rate (BPM) over Time",
-                            data: data.map(it => it.value)
+                            data: datai.map(it => it.value)
                         }
                     ]
                 }
