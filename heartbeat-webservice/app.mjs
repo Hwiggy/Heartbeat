@@ -2,7 +2,7 @@ import express from 'express';
 import timestamp from 'unix-timestamp';
 import * as WebSocket from 'ws'
 
-import config from '/config.json' assert { type: "json" }
+import config from './config.json' assert { type: "json" }
 const app = express()
 
 app.set('view engine', 'pug')
