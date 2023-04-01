@@ -1,6 +1,7 @@
 import express from 'express';
 import timestamp from 'unix-timestamp';
 import * as WebSocket from 'ws'
+require('map.stringify')
 
 import config from './config.json' assert { type: "json" }
 const app = express()
@@ -15,8 +16,7 @@ const wss = new WebSocket.WebSocketServer({ server })
 
 const graph = new Map()
 app.get('/', (req, res) => {
-    let asString = JSON.stringify(graph)
-    res.render('index', { graph: asString })
+    res.render('index', { graph: Map.stringify(graph) })
 })
 wss.on('connection', ws => {
     ws.on('error', console.error)
