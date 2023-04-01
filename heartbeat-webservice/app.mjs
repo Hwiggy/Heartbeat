@@ -16,7 +16,11 @@ const wss = new WebSocket.WebSocketServer({ server })
 
 const graph = new Map()
 app.get('/', (req, res) => {
-    res.render('index', { datai: Array.from(graph) })
+    let data = Array.from(graph).map(elem => ({
+        "x": elem[0],
+        "y": elem[1]
+    }))
+    res.render('index', {data: JSON.stringify(data)})
 })
 wss.on('connection', ws => {
     ws.on('error', console.error)
