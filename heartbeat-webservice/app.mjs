@@ -15,7 +15,7 @@ const wss = new WebSocket.WebSocketServer({ server })
 
 const graph = new Map()
 app.get('/', (req, res) => {
-    res.render('index', { graph: JSON.stringify(graph) })
+    res.render('index', { graph: JSON.stringify(graph, null, 2) })
 })
 wss.on('connection', ws => {
     ws.on('error', console.error)
