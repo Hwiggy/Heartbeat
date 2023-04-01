@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
         }
     })
     res.render('index', {data: JSON.stringify(data)}, () => {
-        setInterval(res.refresh(), 1000)
+        setInterval(() => res.reload(), 1000)
     })
 })
 wss.on('connection', ws => {
