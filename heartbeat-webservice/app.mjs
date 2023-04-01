@@ -17,7 +17,7 @@ const wss = new WebSocket.WebSocketServer({ server })
 const graph = new Map()
 app.get('/', (req, res) => {
     let data = Array.from(graph).map(elem => {
-        let date = timestamp.toDate(Number(elem[0]))
+        let date = timestamp.toDate(Number(elem[0]) / 1000)
         let dateStr = moment(date).format("MM-dd-yyyy hh:mm:ss")
         return {
             "x": dateStr,
