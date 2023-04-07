@@ -9,6 +9,9 @@ html
     body
         canvas(id="chart")
         script.
+            setInterval(() => {
+                location.reload()
+            }, 6000)
             let datai = !{data}
             new Chart(document.getElementById("chart"),
                 {
